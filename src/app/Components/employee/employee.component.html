@@ -1,0 +1,30 @@
+<!-- <app-employee-side-bar></app-employee-side-bar> -->
+
+
+<div *ngIf="personalInfo" class="card">
+  <h2 class="card-title">🧑 Personal Information</h2>
+  <div class="info-item">
+    <span class="label">First Name:</span>
+    <span class="value">{{ personalInfo.firstName }}</span>
+  </div>
+  <div class="info-item">
+    <span class="label">Last Name:</span>
+    <span class="value">{{ personalInfo.lastName }}</span>
+  </div>
+  <div class="info-item">
+    <span class="label">Phone Number:</span>
+    <span class="value">{{ personalInfo.phoneNumber }}</span>
+  </div>
+  <div class="info-item">
+    <span class="label">National ID:</span>
+    <span class="value">{{ personalInfo.nationalID }}</span>
+  </div>
+  <div class="info-item">
+    <span class="label">Age:</span>
+    <span class="value">{{ personalInfo.age }}</span>
+  </div>
+  <!-- <div class="info-item">
+    <span class="label">Signature:</span>
+    <span class="value">{{ personalInfo.signature }}</span>
+  </div> -->
+</div>

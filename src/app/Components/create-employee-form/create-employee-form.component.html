@@ -1,0 +1,130 @@
+<div class="container mt-4">
+    <h3 class="mb-4">Create New Employee</h3>
+
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" class="row g-3" novalidate>
+
+        <!-- First Name -->
+        <div class="col-md-6">
+            <label class="form-label">First Name</label>
+            <input type="text" class="form-control" formControlName="firstName"
+                [class.is-invalid]="firstName.invalid && (firstName.dirty || firstName.touched)">
+            <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)" class="invalid-feedback">
+                First name is required.
+            </div>
+        </div>
+
+        <!-- Last Name -->
+        <div class="col-md-6">
+            <label class="form-label">Last Name</label>
+            <input type="text" class="form-control" formControlName="lastName"
+                [class.is-invalid]="lastName.invalid && (lastName.dirty || lastName.touched)">
+            <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)" class="invalid-feedback">
+                Last name is required.
+            </div>
+        </div>
+
+        <!-- National ID -->
+        <div class="col-md-6">
+            <label class="form-label">National ID</label>
+            <input type="text" class="form-control" formControlName="nationalID"
+                [class.is-invalid]="nationalID.invalid && (nationalID.dirty || nationalID.touched)">
+            <div *ngIf="nationalID.errors && (nationalID.dirty || nationalID.touched)" class="invalid-feedback">
+                <div *ngIf="nationalID.errors['required']">National ID is required.</div>
+                <div *ngIf="nationalID.errors['pattern']">National ID must be exactly 14 digits.</div>
+            </div>
+        </div>
+
+        <!-- Signature -->
+        <div class="col-md-6">
+            <label class="form-label">Signature</label>
+            <div class="input-group">
+                <input type="text" class="form-control dimmed-input" formControlName="signature" readonly>
+                <button class="btn btn-primary" type="button" (click)="uploadInput.click()">Upload</button>
+                <input type="file" #uploadInput hidden (change)="onFileSelected($event)">
+            </div>
+        </div>
+
+        <!-- Age -->
+        <div class="col-md-3">
+            <label class="form-label">Age</label>
+            <input type="number" class="form-control" formControlName="age"
+                [class.is-invalid]="age.invalid && (age.dirty || age.touched)">
+            <div *ngIf="age.errors && (age.dirty || age.touched)" class="invalid-feedback">
+                Age must be at least 18.
+            </div>
+        </div>
+
+        <!-- Username -->
+        <div class="col-md-9">
+            <label class="form-label">Username</label>
+            <input type="text" class="form-control" formControlName="userName"
+                [class.is-invalid]="userName.invalid && (userName.dirty || userName.touched)">
+            <div *ngIf="userName.errors && (userName.dirty || userName.touched)" class="invalid-feedback">
+                Username is required.
+            </div>
+        </div>
+
+        <!-- Email -->
+        <div class="col-md-6">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" formControlName="email"
+                [class.is-invalid]="email.invalid && (email.dirty || email.touched)">
+            <div *ngIf="email.errors && (email.dirty || email.touched)" class="invalid-feedback">
+                Valid email is required.
+            </div>
+        </div>
+
+        <!-- Phone -->
+        <div class="col-md-6">
+            <label class="form-label">Phone Number</label>
+            <input type="text" class="form-control" formControlName="phoneNumber"
+                [class.is-invalid]="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)">
+            <div *ngIf="phoneNumber.errors && (phoneNumber.dirty || phoneNumber.touched)" class="invalid-feedback">
+                <div *ngIf="phoneNumber.errors['required']">Phone number is required.</div>
+                <div *ngIf="phoneNumber.errors['pattern']">
+                    Phone number must be 11 digits and start with 010, 011, 012, or 015.
+                </div>
+            </div>
+        </div>
+
+        <!-- Password -->
+        <div class="col-md-6">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" formControlName="password"
+                [class.is-invalid]="password.invalid && (password.dirty || password.touched)">
+            <div *ngIf="password.errors && (password.dirty || password.touched)" class="invalid-feedback">
+                Password must be at least 6 characters.
+            </div>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="col-md-6">
+            <label class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" formControlName="confirmPassword"
+                [class.is-invalid]="(confirmPassword.invalid || employeeForm.errors?.['mismatch']) && (confirmPassword.dirty || confirmPassword.touched)">
+            <div *ngIf="employeeForm.errors?.['mismatch'] && (confirmPassword.dirty || confirmPassword.touched)"
+                class="invalid-feedback">
+                Passwords do not match.
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary" [disabled]="employeeForm.invalid">
+                Create Employee
+            </button>
+        </div>
+    </form>
+
+    <!-- Server Errors -->
+    <div *ngIf="errorMessages.length" class="alert alert-danger mt-3">
+        <ul class="mb-0">
+            <li *ngFor="let error of errorMessages">{{ error }}</li>
+        </ul>
+    </div>
+
+    <!-- Success -->
+    <div *ngIf="successMessage" class="alert alert-success mt-3">
+        {{ successMessage }}
+    </div>
+</div>

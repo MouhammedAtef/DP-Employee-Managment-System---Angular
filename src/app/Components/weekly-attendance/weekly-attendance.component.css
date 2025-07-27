@@ -1,0 +1,117 @@
+.attendance-container {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.attendance-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  
+  h2 {
+    color: #2c3e50;
+    font-weight: 600;
+  }
+}
+
+.date-navigation {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  
+  .nav-btn {
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    
+    &:hover {
+      background: #2980b9;
+      transform: scale(1.05);
+    }
+    
+    &:disabled {
+      background: #95a5a6;
+      cursor: not-allowed;
+    }
+  }
+  
+  .date-picker {
+    input {
+      border-radius: 20px;
+      padding: 8px 15px;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+  }
+}
+
+.attendance-card {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  
+  table {
+    th {
+      background-color: #f1f5f9;
+      font-weight: 600;
+      color: #4a5568;
+    }
+    
+    td {
+      vertical-align: middle;
+    }
+  }
+}
+
+.progress {
+  height: 10px;
+  border-radius: 5px;
+  background-color: #e9ecef;
+  
+  .progress-bar {
+    border-radius: 5px;
+  }
+}
+
+.no-data {
+  text-align: center;
+  padding: 40px;
+  color: #6c757d;
+  
+  i {
+    font-size: 48px;
+    margin-bottom: 15px;
+    color: #adb5bd;
+  }
+  
+  p {
+    font-size: 18px;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .attendance-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .date-navigation {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

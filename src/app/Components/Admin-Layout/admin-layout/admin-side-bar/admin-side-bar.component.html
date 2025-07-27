@@ -1,0 +1,45 @@
+<div class="d-flex flex-column justify-content-between vh-100 p-3 bg-white shadow rounded sidebar">
+
+  <!-- Top Section -->
+  <div>
+    <div class="mb-4 text-center">
+      <div class="fw-bold mt-4">Welcome to Admin Dashboard</div>
+    </div>
+
+    <ul class="nav flex-column">
+      <!-- Create Employee -->
+      <li class="nav-item mb-3">
+        <a class="nav-link text-dark d-flex align-items-center" routerLink="/Admin-LayOut" routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }">
+          <i class="bi bi-person-circle me-2"></i> Create New Employee
+        </a>
+      </li>
+      <!-- Employee Listing -->
+      <li class="nav-item mb-3">
+        <a class="nav-link text-dark d-flex align-items-center" routerLink="/Admin-LayOut/All-Employee"
+          routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <i class="bi bi-person-circle me-2"></i> All Employees
+        </a>
+      </li>
+      <!-- AttendanceList -->
+      <li class="nav-item mb-3">
+        <a class="nav-link text-dark d-flex align-items-center" routerLink="/Admin-LayOut/AttendanceDailyList"
+          routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <i class="bi bi-person-circle me-2"></i> Attendance Daily List
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Bottom Section -->
+  <div>
+    <ul class="nav flex-column mb-3">
+      <li class="nav-item">
+        <a class="nav-link text-danger d-flex align-items-center" (click)="onSignOut()">
+          <i class="bi bi-box-arrow-right me-2"></i> Sign Out
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</div>

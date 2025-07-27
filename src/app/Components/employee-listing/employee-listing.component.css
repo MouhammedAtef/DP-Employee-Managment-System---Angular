@@ -1,0 +1,28 @@
+.table th,
+.table td {
+  vertical-align: middle;
+}
+
+.dropdown-menu li {
+  cursor: pointer;
+}
+
+.icon-btn {
+  padding: 0.25rem;
+  border: none;
+  background-color: transparent;
+  transition: background-color 0.2s ease;
+  border-radius: 0.25rem;
+}
+
+.icon-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05); /* light gray */
+}
+
+.icon-btn.text-danger:hover {
+  background-color: rgba(220, 53, 69, 0.1); /* light red for delete */
+}
+
+.icon-btn.text-primary:hover {
+  background-color: rgba(13, 110, 253, 0.1); /* light blue for edit */
+}

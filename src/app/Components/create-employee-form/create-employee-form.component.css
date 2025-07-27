@@ -1,0 +1,7 @@
+/* In your component's CSS file */
+.dimmed-input {
+    background-color: #f8f9fa;  
+    color: #6c757d;           
+    border-color: #dee2e6;    
+    cursor: not-allowed;       
+}

@@ -1,0 +1,139 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Employee List</h2>
+
+  <!-- Page Size, Sort, Filter -->
+  <div class="row align-items-center mb-3 g-2">
+    <div class="col-md-8">
+      <div class="d-flex flex-wrap align-items-center gap-2">
+        <!-- Page Size Dropdown -->
+        <div class="d-flex align-items-center">
+          <label for="pageSize" class="me-2 fw-semibold">Page Size:</label>
+          <select id="pageSize" class="form-select form-select-sm w-auto" [(ngModel)]="pageSize"
+            (change)="onPageSizeChange()">
+            <option [ngValue]="5">5</option>
+            <option [ngValue]="10">10</option>
+            <option [ngValue]="25">25</option>
+            <option [ngValue]="50">50</option>
+          </select>
+        </div>
+
+        <!-- Sort -->
+        <div class="dropdown">
+          <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+            <i class="bi bi-funnel"></i> Sort By
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" (click)="sortBy('firstName')">First Name</a></li>
+            <li><a class="dropdown-item" (click)="sortBy('lastName')">Last Name</a></li>
+            <li><a class="dropdown-item" (click)="sortBy('phoneNumber')">Phone Number</a></li>
+            <li><a class="dropdown-item" (click)="sortBy('nationalID')">National ID</a></li>
+            <li><a class="dropdown-item" (click)="sortBy('age')">Age</a></li>
+          </ul>
+        </div>
+
+        <!-- Filter -->
+        <div class="dropdown">
+          <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+            <i class="bi bi-filter"></i> Filter
+          </button>
+          <ul class="dropdown-menu p-3" style="min-width: 250px;">
+            <li class="mb-2">
+              <input type="text" class="form-control form-control-sm" placeholder="First Name"
+                [(ngModel)]="filters.firstName" />
+            </li>
+            <li class="mb-2">
+              <input type="text" class="form-control form-control-sm" placeholder="Last Name"
+                [(ngModel)]="filters.lastName" />
+            </li>
+            <li class="mb-2">
+              <input type="number" class="form-control form-control-sm" placeholder="Age" [(ngModel)]="filters.age" />
+            </li>
+            <li class="mb-2">
+              <input type="number" class="form-control form-control-sm" placeholder="Phone Number"
+                [(ngModel)]="filters.phoneNumber" />
+            </li>
+            <li class="mb-2">
+              <input type="number" class="form-control form-control-sm" placeholder="National ID"
+                [(ngModel)]="filters.nationalID" />
+            </li>
+            <li class="text-end mt-2">
+              <button class="btn btn-sm btn-primary" (click)="applyFilters()">Apply</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Total Count -->
+    <div class="col-md-4 text-md-end text-center mt-2 mt-md-0">
+      <span class="text-muted">Total: {{ totalCount }} employees</span>
+    </div>
+  </div>
+
+  <!-- Table -->
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover align-middle">
+      <thead class="table-dark text-center">
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Phone Number</th>
+          <th>National ID</th>
+          <th>Age</th>
+          <th>Signature</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        <tr *ngFor="let emp of employees">
+          <td>{{ emp.firstName }}</td>
+          <td>{{ emp.lastName }}</td>
+          <td>{{ emp.phoneNumber }}</td>
+          <td>{{ emp.nationalID }}</td>
+          <td>{{ emp.age }}</td>
+          <!-- <td>{{ emp.signature }}</td> -->
+          <td>
+            <button class="btn btn-secondary btn-sm" (click)="viewSignature(emp)">
+              View
+            </button>
+          </td>
+
+          <td>
+            <button class="btn icon-btn text-primary" (click)="editEmployee(emp)">
+              <i class="bi bi-pencil fs-5"></i>
+            </button>
+          </td>
+          <td>
+            <button class="btn icon-btn text-danger" (click)="deleteEmployee(emp)">
+              <i class="bi bi-x-lg fs-5"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="signatureModal" tabindex="-1" aria-labelledby="signatureModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Employee Signature</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img [src]="selectedSignature" class="img-fluid" alt="Signature">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Pagination -->
+  <div class="d-flex flex-wrap justify-content-between align-items-center mt-3 gap-2">
+    <button class="btn btn-primary" (click)="previousPage()" [disabled]="pageNumber === 1">Previous</button>
+    <span>Page {{ pageNumber }} / {{ totalPages }}</span>
+    <button class="btn btn-primary" (click)="nextPage()" [disabled]="pageNumber >= totalPages">Next</button>
+  </div>
+</div>

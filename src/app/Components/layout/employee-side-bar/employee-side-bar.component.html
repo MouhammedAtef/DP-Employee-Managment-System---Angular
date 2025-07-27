@@ -1,0 +1,62 @@
+<div class="d-flex flex-column justify-content-between vh-100 p-3 bg-white shadow rounded sidebar">
+  <!-- Top Section -->
+  <div>
+    <div class="mb-4 text-center">
+      <div class="fw-bold mt-4">Welcome</div>
+    </div>
+
+    <ul class="nav flex-column">
+      <li class="nav-item mb-3">
+        <a class="nav-link text-dark d-flex align-items-center" routerLink="/profile" routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }">
+          <i class="bi bi-person-circle me-2"></i> Profile Information
+        </a>
+      </li>
+      <li class="nav-item mb-3">
+        <a class="nav-link text-dark d-flex align-items-center" routerLink="/profile/check-in-history"
+          routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <i class="bi bi-clock-history me-2"></i> Check-In History
+        </a>
+      </li>
+
+       <li class="nav-item mb-3">
+        <a class="nav-link text-dark d-flex align-items-center" routerLink="/profile/WeeklyAttendance"
+          routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <i class="bi bi-clock-history me-2"></i> Weekly Attendance
+        </a>
+      </li>
+
+      <li class="nav-item mb-3">
+        <a class="nav-link text-dark d-flex align-items-center" routerLink="/profile/change-password"
+          routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <i class="bi bi-clock-history me-2"></i> Change Password
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Bottom Section -->
+  <div>
+    <ul class="nav flex-column mb-3">
+
+
+      <li class="nav-item mb-3">
+        <a class="nav-link text-dark d-flex align-items-center" (click)="onCheckIn()">
+          <i class="bi bi-check-circle me-2"></i> Check-In
+        </a>
+      </li>
+
+      <li class="nav-item mb-3" *ngIf="isCheckedIn">
+        <a class="nav-link text-dark d-flex align-items-center" (click)="onCheckOut()">
+          <i class="bi bi-box-arrow-in-left me-2"></i> Check-Out
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link text-danger d-flex align-items-center" (click)="onSignOut()">
+          <i class="bi bi-box-arrow-right me-2"></i> Sign Out
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+.sidebar {
+  width: 260px;
+  border-radius: 16px;
+}
+.nav-link {
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+.nav-link:hover {
+  background-color: #6c72e0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+

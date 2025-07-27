@@ -1,0 +1,28 @@
+<h2 class="mb-4 text-xl font-semibold">Check-In History</h2>
+
+<table class="min-w-full table-auto border border-gray-300 shadow rounded">
+  <thead class="bg-gray-200">
+    <tr>
+      <th class="px-4 py-2 border">Day</th>
+      <th class="px-4 py-2 border">Check-In Time</th>
+      <th class="px-4 py-2 border">Check-Out Time</th>
+      <th class="px-4 py-2 border">Total Hours</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let log of attendanceLogs" class="hover:bg-gray-50">
+      <td class="px-4 py-2 border">
+        {{ log.dayName }} - {{ formatDate(log.checkInTime) }}
+      </td>
+      <td class="px-4 py-2 border">
+        {{ formatTime(log.checkInTime) }}
+      </td>
+      <td class="px-4 py-2 border">
+        {{ log.checkOutTime ? formatTime(log.checkOutTime) : 'Still Working' }}
+      </td>
+      <td class="px-4 py-2 border">
+        {{ getTotalHours(log.checkInTime, log.checkOutTime) }}
+      </td>
+    </tr>
+  </tbody>
+</table>
