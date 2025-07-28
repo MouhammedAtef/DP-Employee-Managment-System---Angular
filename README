@@ -1,0 +1,5 @@
+## Reused Components
+
+- `ForgetpasswordComponent` and `ResetPasswordComponent` were reused from my ITI Graduation Project with some modifications
+- These components handle secure password reset and recovery workflows  
+- Integrated seamlessly into this project to ensure consistency and save development time
